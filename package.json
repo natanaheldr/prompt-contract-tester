@@ -1,5 +1,6 @@
 {
   "name": "prompt-contract-tester",
+  "description": "Test the same prompt across multiple AI models and validate responses against a JSON Schema contract.",
   "private": true,
   "version": "1.0.0",
   "type": "module",

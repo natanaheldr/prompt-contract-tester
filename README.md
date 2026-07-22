@@ -2,7 +2,7 @@
 
 <br>
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=32&duration=2800&pause=600&color=818CF8&center=true&vCenter=true&width=700&height=70&lines=%E2%9A%A1+Prompt+Contract+Tester;%F0%9F%A7%AA+Write+once.+Test+everywhere." alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=30&duration=3000&pause=500&color=818CF8&center=true&vCenter=true&width=650&height=60&lines=Prompt+Contract+Tester" alt="Typing SVG" />
 
 <br>
 
@@ -10,18 +10,18 @@
 <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 <img src="https://img.shields.io/badge/Tailwind-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind" />
 <img src="https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-<img src="https://img.shields.io/badge/Vitest-17/17_passing-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Tests" />
-<img src="https://img.shields.io/badge/License-MIT-success?style=for-the-badge" alt="License" />
+<img src="https://img.shields.io/badge/tests-17/17_passing-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Tests" />
+<img src="https://img.shields.io/badge/license-MIT-success?style=for-the-badge" alt="License" />
 
 <br>
 <br>
 
-<img src="./screenshots/app-full.png" width="90%" alt="Prompt Contract Tester Screenshot" />
+<img src="./screenshots/app-full.png" width="90%" alt="Screenshot of the app" />
 
 <br>
 <br>
 
-**Send one prompt to multiple AI models. Validate every response against your JSON Schema contract.**
+**Same prompt, multiple models, one contract. Know instantly which one broke.**
 
 </div>
 
@@ -29,15 +29,17 @@
 
 ---
 
-## Why?
+## What problem does this solve?
 
-AI models don't all speak the same JSON. A prompt that returns perfect structured data from GPT-4o might produce broken JSON on Claude, or hallucinate fields on smaller models.
+If you've ever built anything that consumes LLM output as structured data, you already know the pain. You craft a prompt, test it on GPT-4o, it returns perfect JSON every time. Then you try Claude, and suddenly the field names are different. Or the response is wrapped in a markdown block. Or a required field just vanished.
 
-**Prompt Contract Tester** solves this by letting you define your expected output shape as a JSON Schema contract and validating every model's response against it — in real time, across models, with full detail on what failed and why.
+This tool lets you write your prompt once, define exactly what shape the response should have, and then fire it at as many models as you want. Each response gets validated against your schema on the spot. You see pass or fail per model, with the exact validation errors when something goes wrong.
+
+No more guessing. No more copy-pasting responses into a manual checker.
 
 ---
 
-## Quick Start
+## How to use it
 
 ```bash
 git clone https://github.com/natanaheldr/prompt-contract-tester.git
@@ -46,26 +48,30 @@ npm install
 npm run dev
 ```
 
-Open [localhost:5173](http://localhost:5173). The **Mock adapter** works immediately with no API keys. Add OpenAI or Anthropic keys to test against live models. All keys stay in your browser's localStorage — never transmitted anywhere.
+That's it. Open [localhost:5173](http://localhost:5173) and you're ready to go.
+
+The built-in **Mock adapter** works right away, no API keys needed. When you're ready to test against real models, drop in your OpenAI or Anthropic key. Keys are stored in your browser's localStorage and never touch any server.
 
 ---
 
-## Features
+## What you can do with it
 
 | | | |
 |:---|:---|:---|
-| **Prompt Editor** | Multi-line editor with `{{placeholder}}` detection. Input fields auto-generate for each variable. Preview rendered prompt before sending. | `{{topic}}` `{{language}}` |
-| **Contract Editor** | Paste any JSON Schema. Real-time syntax validation via Ajv. Toggle rules: `required`, `type`, `pattern`, `additionalProperties`. | JSON Schema |
-| **Model Config** | Manage OpenAI, Anthropic, and Mock adapters. Temperature slider, max tokens, masked API key input per model. | ⚙️ |
-| **Parallel Runner** | One click sends your prompt to every enabled model concurrently via `Promise.all`. Live progress bars per adapter. | 🚀 |
-| **Results Dashboard** | Table: latency, contract pass/fail, token count, cost estimate. Expand any row for raw response + validation errors. | 📊 |
-| **History & Export** | All runs saved to localStorage. Sidebar lists past runs with timestamps and pass/fail badges. Export results as JSON. | 💾 |
+| **Write prompts** | Type whatever you want, use `{{placeholders}}` for dynamic bits. The editor picks them up and gives you input fields for each one. | |
+| **Set your contract** | Paste a JSON Schema that describes the shape you expect. The editor checks it for syntax errors as you go. You can toggle which rules to enforce: required fields, types, patterns, extra properties. | |
+| **Pick your models** | OpenAI, Anthropic, and a local Mock adapter come pre-configured. Adjust temperature, max tokens, and drop in your API key. Add more instances if you want to compare different model versions side by side. | |
+| **Run everything at once** | Hit Run All. Every enabled model gets the same prompt at the same time. You'll see a progress bar for each one. | |
+| **See results** | A table shows latency, pass or fail, token count, and estimated cost per model. Click any row to expand and see the raw response, parsed JSON, and exactly what validation rule failed. | |
+| **History** | Every run gets saved to localStorage automatically. The sidebar shows your past runs with timestamps. Click one to bring it back. You can also export results as a JSON file. | |
 
 ---
 
-## Demo: Example Workflow
+## An example in practice
 
-**Step 1 — Write a prompt with placeholders:**
+Say you want models to answer questions about a topic and return structured data.
+
+**The prompt:**
 
 ```text
 Answer the following question about {{topic}} in {{language}}.
@@ -73,7 +79,7 @@ Question: What are the key concepts of {{topic}}?
 Respond with valid JSON only.
 ```
 
-**Step 2 — Define your contract (JSON Schema):**
+**Your contract:**
 
 ```json
 {
@@ -93,7 +99,7 @@ Respond with valid JSON only.
 }
 ```
 
-**Step 3 — Run against Mock adapter (instant result):**
+**Mock adapter responds with:**
 
 ```json
 {
@@ -105,144 +111,115 @@ Respond with valid JSON only.
 }
 ```
 
-`PASS` · Latency: ~200ms · Cost: $0.00
+Contract passes immediately, ~200ms latency, zero cost. Swap in real models once your prompt and contract are solid.
 
 ---
 
-## Tech Stack
+## Tech under the hood
 
 <div align="center">
 
-| Layer | Technology | Purpose |
+| What | Using | Why |
 |:---:|:---|:---|
-| UI | React 19 + TypeScript 5 | Strict type-safe components |
-| Build | Vite 8 | Dev server + production bundler |
-| Style | Tailwind CSS v4 | Utility-first dark theme |
-| Validation | Ajv | JSON Schema compilation & validation |
-| HTTP | Axios | LLM API calls with error handling |
-| Testing | Vitest + React Testing Library | 17 unit + component tests |
-| CI | GitHub Actions | Lint → Test → Build on push |
-| Storage | localStorage | State persistence, no backend |
+| UI | React 19 + TypeScript | Components stay predictable with strict types |
+| Build | Vite 8 | Instant dev server, fast production builds |
+| Style | Tailwind CSS v4 | Dark theme out of the box, minimal CSS |
+| Validation | Ajv | Battle-tested JSON Schema validator |
+| HTTP | Axios | Clean error handling for API calls |
+| Testing | Vitest + RTL | Fast tests, React component rendering |
+| Storage | localStorage | No backend, state survives refreshes |
 
 </div>
 
 ---
 
-## Adapters
+## Adapters included
 
 | | OpenAI | Anthropic | Mock |
 |:---|:---:|:---:|:---:|
-| **Endpoint** | `api.openai.com/v1` | `api.anthropic.com/v1` | local, no network |
-| **Auth** | `Bearer` token | `x-api-key` header | none |
-| **Errors handled** | 401, 429, 5xx | 401, 429, 5xx | never fails |
-| **Latency** | ~1–3s | ~1–3s | ~200ms fixed |
-| **API key** | Required | Required | Not needed |
+| **Where it calls** | `api.openai.com/v1` | `api.anthropic.com/v1` | local, no network |
+| **How it authenticates** | `Bearer` token | `x-api-key` header | nothing |
+| **Error handling** | 401, 429, 5xx | 401, 429, 5xx | can't fail |
+| **Typical latency** | 1 to 3 seconds | 1 to 3 seconds | ~200ms |
+| **Needs API key** | yes | yes | no |
 
-API keys are stored exclusively in your browser's **localStorage**. The app is 100% client-side with zero server dependencies.
+Every API key you provide lives in your browser's localStorage. The app has no backend. It never sends your keys anywhere except directly to the model provider's API.
 
 ---
 
-## Project Structure
+## How the code is organized
 
 ```
 src/
-├── types/
-│   └── index.ts              TypeScript interfaces
-├── context/
-│   └── AppContext.tsx         React Context + useReducer
+├── types/                 Shared interfaces and types
+├── context/               Global state via React Context + useReducer
 ├── adapters/
-│   ├── types.ts              Adapter interface
-│   ├── openai.ts             OpenAI chat completions
-│   ├── anthropic.ts          Anthropic messages API
-│   └── mock.ts               Deterministic local adapter
+│   ├── types.ts            Adapter contract
+│   ├── openai.ts           Talks to OpenAI's chat API
+│   ├── anthropic.ts        Talks to Anthropic's messages API
+│   └── mock.ts             Returns a fixed response after 200ms
 ├── components/
-│   ├── Layout.tsx            Header + sidebar + main
-│   ├── PromptEditor.tsx      Textarea + placeholder fields
-│   ├── ContractEditor.tsx    JSON Schema editor + rule toggles
-│   ├── ModelConfigPanel.tsx  Model list management
-│   ├── TestRunner.tsx        Run All + progress tracking
-│   ├── ResultsDashboard.tsx  Summary table + expandable rows
-│   └── HistorySidebar.tsx    Past runs sidebar
+│   ├── Layout.tsx           Page shell with header and sidebar
+│   ├── PromptEditor.tsx     Prompt textarea + placeholder inputs
+│   ├── ContractEditor.tsx   Schema editor + syntax check + rule toggles
+│   ├── ModelConfigPanel.tsx Add and configure model instances
+│   ├── TestRunner.tsx       Run All button with per-model progress
+│   ├── ResultsDashboard.tsx Results table with expandable rows
+│   └── HistorySidebar.tsx   Past runs list, click to restore
 ├── utils/
-│   ├── validateSchema.ts     Ajv compiler + data validator
-│   ├── storage.ts            localStorage helpers
-│   ├── costCalculator.ts     Token → USD mapping
-│   └── placeholderParser.ts  {{key}} detection + fill
+│   ├── validateSchema.ts    Compiles and runs Ajv validations
+│   ├── storage.ts           Save and load from localStorage
+│   ├── costCalculator.ts    Rough cost estimates from token counts
+│   └── placeholderParser.ts Find {{keys}} and fill them in
 └── styles/
-    └── index.css             Tailwind v4 + custom scrollbars
+    └── index.css            Tailwind directives + scrollbar tweaks
 
 tests/
-├── setup.ts
-├── adapters.test.ts          4 tests
-├── validateSchema.test.ts    8 tests
+├── adapters.test.ts          Mock adapter behavior
+├── validateSchema.test.ts    Schema validation edge cases
 └── components/
-    └── PromptEditor.test.tsx  5 tests
+    └── PromptEditor.test.tsx Placeholder detection and user input
 ```
 
 ---
 
-## Scripts
+## Commands
 
-| Command | Description |
+| Command | What it does |
 |:---|:---|
-| `npm run dev` | Start dev server on `localhost:5173` |
-| `npm run build` | TypeScript check + production bundle |
-| `npm run preview` | Preview production build |
-| `npm test` | Run all 17 Vitest suites |
-| `npm run test:watch` | Watch mode for development |
-| `npm run lint` | Oxlint static analysis |
-| `npm run format` | Prettier auto-format |
+| `npm run dev` | Start the dev server at localhost:5173 |
+| `npm run build` | Type-check and create a production bundle |
+| `npm run preview` | Serve the production build locally |
+| `npm test` | Run all tests once |
+| `npm run test:watch` | Watch files and re-run tests |
+| `npm run lint` | Run the linter |
+| `npm run format` | Auto-format with Prettier |
 
 ---
 
-## Testing
+## Tests
+
+There are 17 tests across 3 files, all passing.
 
 ```
 ✓ tests/validateSchema.test.ts      (8 tests)
 ✓ tests/components/PromptEditor...  (5 tests)
 ✓ tests/adapters.test.ts            (4 tests)
-
-Test Files  3 passed (3)
-     Tests  17 passed (17)
 ```
 
-<br>
-
-<div align="center">
-
-| Test Suite | Tests | What's Covered |
-|:---|:---:|:---|
-| `adapters.test.ts` | 4 | Mock adapter shape, timing, usage stats |
-| `validateSchema.test.ts` | 8 | Valid/invalid JSON, required fields, type mismatch, edge cases |
-| `PromptEditor.test.tsx` | 5 | Placeholder detection, input fields, Load Example |
-
-</div>
+They cover schema validation with various inputs, the mock adapter's behavior and timing, and the prompt editor's placeholder detection.
 
 ---
 
-## CI/CD
+## Want to contribute?
 
-Every push to `main` triggers: **Checkout → Install → Lint → Test → Build**
-
-All steps run on GitHub Actions with zero secrets required.
-
----
-
-## Contributing
-
-1. Fork the repo
-2. Create a branch: `git checkout -b feature/amazing`
-3. Commit: `git commit -m 'Add feature'`
-4. Push: `git push origin feature/amazing`
-5. Open a Pull Request
-
-Make sure `npm test` passes before submitting.
+If you find a bug or have an idea, open an issue or send a pull request. Just make sure `npm test` passes before submitting.
 
 ---
 
 ## License
 
-[MIT](./LICENSE) — free for personal and commercial use.
+MIT. Use it however you want.
 
 <br>
 

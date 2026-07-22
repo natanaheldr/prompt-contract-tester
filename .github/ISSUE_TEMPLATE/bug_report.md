@@ -1,28 +1,23 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: '[BUG] '
+about: Let us know something's broken
+title: '[bug] '
 labels: bug
 assignees: ''
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**What happened?**
+Tell us what went wrong. Be as specific as you can.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**How can we reproduce it?**
+Walk us through the steps:
+1. Went to '...'
+2. Clicked on '...'
+3. Saw this error: '...'
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**What did you expect instead?**
+What should have happened.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Environment:**
-- OS: [e.g. Windows, macOS]
-- Browser: [e.g. Chrome, Firefox]
-- Version: [e.g. 22]
+**Your setup:**
+- OS: [e.g. Windows 11, macOS 15]
+- Browser: [e.g. Chrome 128, Firefox 131]

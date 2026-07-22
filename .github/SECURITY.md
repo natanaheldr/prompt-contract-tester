@@ -1,20 +1,17 @@
-# Security Policy
+# Security
 
-## Supported Versions
+## Supported versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.0.x   | :white_check_mark: |
+| Version | Supported |
+| ------- | --------- |
+| 1.0.x   | yes |
 
-## Reporting a Vulnerability
+## Found a vulnerability?
 
-If you discover a security vulnerability, please **do not** open a public issue.
+Please don't open a public issue. Report it privately through GitHub's [security advisory](https://github.com/natanaheldr/prompt-contract-tester/security/advisories/new) page.
 
-Instead, report it via GitHub's [private vulnerability reporting](https://github.com/natanaheldr/prompt-contract-tester/security/advisories/new).
+## How this app handles your data
 
-## Security Design
-
-- **API keys** are stored exclusively in the browser's `localStorage`
-- **No backend** — the app is a 100% static SPA with zero server dependencies
-- **No data leaves your machine** — all API calls go directly from your browser to the LLM provider
-- **No telemetry** — the app does not track, log, or transmit any usage data
+- API keys go into localStorage and stay there. They're never sent to any server other than the model provider's API.
+- There is no backend. The app is a static page.
+- Nothing gets tracked, logged, or sent anywhere without you knowing.

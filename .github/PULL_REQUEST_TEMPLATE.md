@@ -1,20 +1,18 @@
-## Description
-Please include a summary of the change and which issue is fixed.
+**What does this PR do?**
+A quick summary of the change.
 
-## Type of change
+**Type of change**
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
-- [ ] Documentation update
+- [ ] Docs or cleanup
 
-## How Has This Been Tested?
+**Did you test it?**
 - [ ] `npm test` passes
-- [ ] `npm run build` succeeds
-- [ ] Tested manually in browser
+- [ ] `npm run build` works
+- [ ] Tested in a browser
 
-## Checklist
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
+**Checklist**
+- [ ] Code follows the project's style
+- [ ] I checked my own changes
+- [ ] Docs are updated if needed
