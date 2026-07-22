@@ -1,30 +1,30 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=500&color=818CF8&center=true&vCenter=true&width=600&lines=Prompt+Contract+Tester">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=500&color=4F46E5&center=true&vCenter=true&width=600&lines=Prompt+Contract+Tester" alt="Prompt Contract Tester">
-</picture>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white&style=flat-square" alt="React 19">
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white&style=flat-square" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white&style=flat-square" alt="Tailwind">
-  <img src="https://img.shields.io/badge/Vitest-passing-6E9F18?logo=vitest&logoColor=white&style=flat-square" alt="Tests">
-  <img src="https://img.shields.io/badge/license-MIT-success?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/CI-github%20actions-2088FF?logo=githubactions&logoColor=white&style=flat-square" alt="CI">
-</p>
+<div align="center">
 
 <br>
 
-<p align="center">
-  <strong>
-    Write once. Test everywhere. Validate automatically.
-  </strong>
-</p>
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=32&duration=2800&pause=600&color=818CF8&center=true&vCenter=true&width=650&height=70&lines=%E2%9A%A1+Prompt+Contract+Tester;%F0%9F%A7%AA+Write+once.+Test+everywhere." alt="Typing SVG">
 
-<p align="center">
-  <sub>
-    Send the same prompt to OpenAI, Anthropic, and local models.<br>
-    Validate every response against your JSON Schema contract in real time.
-  </sub>
+<br>
+
+<img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19">
+<img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+<img src="https://img.shields.io/badge/Tailwind-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
+<img src="https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+<img src="https://img.shields.io/badge/Vitest-passing-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Tests">
+<img src="https://img.shields.io/badge/License-MIT-success?style=for-the-badge" alt="License">
+
+<br>
+<br>
+
+<img src="./screenshots/app-full.png" width="100%" alt="Prompt Contract Tester Screenshot" style="border-radius: 8px; border: 1px solid #374151;">
+
+<br>
+<br>
+
+<p>
+  <b>Send one prompt to multiple AI models.</b><br>
+  <b>Validate every response against your JSON Schema contract.</b><br>
+  <b>Get instant pass/fail results with full detail.</b>
 </p>
 
 <br>
@@ -33,14 +33,16 @@
 
 <br>
 
-## Why Prompt Contract Tester?
+</div>
 
-AI models don't all speak the same JSON. A prompt that returns perfectly structured data from GPT-4o might produce broken JSON on Claude, or hallucinate fields on smaller models. **Prompt Contract Tester** eliminates the guesswork — you define your expected output shape as a JSON Schema contract, and the tool validates every model's response against it, instantly.
+<div align="center">
 
-|  |  |  |
-|:---:|:---:|:---:|
-| `{{placeholders}}` | JSON Schema | Multi-model |
-| Dynamic prompts with<br>variable interpolation | Strict output contracts<br>powered by Ajv | Concurrent testing across<br>OpenAI · Anthropic · Mock |
+| | | | |
+|:---:|:---:|:---:|:---:|
+| 🧩 `{{placeholders}}` | 📐 JSON Schema | 🤖 Multi-model | ⚡ Concurrent |
+| Dynamic variable<br>interpolation | Strict output contracts<br>via Ajv | OpenAI · Anthropic<br>· Mock | Parallel execution<br>with live progress |
+
+</div>
 
 <br>
 
@@ -48,37 +50,156 @@ AI models don't all speak the same JSON. A prompt that returns perfectly structu
 
 <br>
 
-## Features
+## 📖 Table of Contents
 
-<table>
+<div align="center">
+
+| | | | |
+|:---:|:---:|:---:|:---:|
+| [Why?](#-why-prompt-contract-tester) | [Features](#-features) | [Quick Start](#-quick-start) | [Demo](#-demo) |
+| [Tech Stack](#-tech-stack) | [Adapters](#-adapters) | [Architecture](#-architecture) | [Scripts](#-scripts) |
+| [Testing](#-testing) | [CI/CD](#-cicd) | [Contributing](#-contributing) | [License](#-license) |
+
+</div>
+
+<br>
+
+---
+
+<br>
+
+## 🎯 Why Prompt Contract Tester?
+
+<div align="center">
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                                                                     │
+│   GPT-4o ──────────┐                                               │
+│                     │                                               │
+│   Claude 3.5 ──────┼──── 📐 JSON Schema Contract ──── ✅ PASS/❌ FAIL │
+│                     │                                               │
+│   Mock Local ──────┘                                               │
+│                                                                     │
+│   Same prompt → Multiple models → Validated responses               │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+<br>
+
+AI models **don't speak the same JSON**. A prompt that returns perfect structured data from GPT-4o might produce **broken JSON** on Claude, or **hallucinate fields** on smaller models.
+
+Prompt Contract Tester eliminates the uncertainty:
+
+- ✅ Define your expected output shape as a **JSON Schema contract**
+- ✅ Send the **exact same prompt** to every model
+- ✅ **Instantly validate** each response against your contract
+- ✅ See **which model failed, and exactly why**
+
+<br>
+
+---
+
+<br>
+
+## ✨ Features
+
+<br>
+
+<table align="center">
   <tr>
-    <td width="50%">
-      <h3>✍️ Prompt Editor</h3>
-      <p>Write multi-line prompts with <code>{{placeholders}}</code>. Dynamic input fields auto-generate for each detected variable. Preview the rendered result before sending.</p>
+    <td align="center" width="33%">
+      <br>
+      <img src="https://img.icons8.com/fluency/48/pencil.png" width="42" height="42">
+      <br><br>
+      <b>Prompt Editor</b>
+      <br><br>
+      <sub>
+        Multi-line editor with<br>
+        <code>{{placeholder}}</code> detection.<br>
+        Dynamic input fields auto-generate<br>
+        for each variable found.<br>
+        Preview rendered prompt before sending.
+      </sub>
+      <br><br>
     </td>
-    <td width="50%">
-      <h3>📋 Contract Editor</h3>
-      <p>Paste any JSON Schema. Real-time syntax validation with Ajv. Toggle rules: <code>required</code>, <code>type</code>, <code>pattern</code>, <code>additionalProperties</code>.</p>
+    <td align="center" width="33%">
+      <br>
+      <img src="https://img.icons8.com/fluency/48/document.png" width="42" height="42">
+      <br><br>
+      <b>Contract Editor</b>
+      <br><br>
+      <sub>
+        Paste any JSON Schema.<br>
+        Real-time syntax validation with Ajv.<br>
+        Toggle rules independently:<br>
+        <code>required</code> · <code>type</code> · <code>pattern</code> · <code>additionalProperties</code>
+      </sub>
+      <br><br>
+    </td>
+    <td align="center" width="33%">
+      <br>
+      <img src="https://img.icons8.com/fluency/48/settings.png" width="42" height="42">
+      <br><br>
+      <b>Model Config</b>
+      <br><br>
+      <sub>
+        Manage OpenAI, Anthropic,<br>
+        and Mock adapters.<br>
+        Temperature slider · Max tokens.<br>
+        API keys stored exclusively in<br>
+        <code>localStorage</code>. Never leaked.
+      </sub>
+      <br><br>
     </td>
   </tr>
   <tr>
-    <td width="50%">
-      <h3>⚙️ Model Configuration</h3>
-      <p>Manage adapters for OpenAI, Anthropic, and Mock. Set temperature, max tokens, and API keys per model. Keys stored exclusively in <code>localStorage</code>.</p>
+    <td align="center" width="33%">
+      <br>
+      <img src="https://img.icons8.com/fluency/48/play.png" width="42" height="42">
+      <br><br>
+      <b>Parallel Runner</b>
+      <br><br>
+      <sub>
+        One click → every enabled model<br>
+        runs concurrently via<br>
+        <code>Promise.all</code>.<br>
+        Live progress bar per adapter:<br>
+        idle → running → success/fail
+      </sub>
+      <br><br>
     </td>
-    <td width="50%">
-      <h3>🚀 Parallel Test Runner</h3>
-      <p>One click sends your prompt to every enabled model concurrently. Live progress bars show <code>idle → running → success/fail</code> per adapter.</p>
+    <td align="center" width="33%">
+      <br>
+      <img src="https://img.icons8.com/fluency/48/combo-chart.png" width="42" height="42">
+      <br><br>
+      <b>Results Dashboard</b>
+      <br><br>
+      <sub>
+        Sortable table with latency,<br>
+        contract status, token count,<br>
+        and cost estimate per model.<br>
+        Expand any row for raw response,<br>
+        parsed JSON, and error details.
+      </sub>
+      <br><br>
     </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>📊 Results Dashboard</h3>
-      <p>Sortable table: latency, contract status, token count, cost estimate. Click any row to expand raw response, parsed JSON, and validation error details.</p>
-    </td>
-    <td width="50%">
-      <h3>📜 History & Export</h3>
-      <p>All runs saved to <code>localStorage</code>. Sidebar lists timestamps, models tested, pass/fail summary. Export results as JSON with one click.</p>
+    <td align="center" width="33%">
+      <br>
+      <img src="https://img.icons8.com/fluency/48/time-machine.png" width="42" height="42">
+      <br><br>
+      <b>History & Export</b>
+      <br><br>
+      <sub>
+        All runs saved to localStorage.<br>
+        Sidebar: timestamps, models,<br>
+        pass/fail badges.<br>
+        Click to restore · Export to JSON.
+      </sub>
+      <br><br>
     </td>
   </tr>
 </table>
@@ -89,7 +210,11 @@ AI models don't all speak the same JSON. A prompt that returns perfectly structu
 
 <br>
 
-## Quick Start
+## 🚀 Quick Start
+
+<div align="center">
+
+<br>
 
 ```bash
 git clone https://github.com/natanaheldr/prompt-contract-tester.git
@@ -98,9 +223,21 @@ npm install
 npm run dev
 ```
 
-Open [**localhost:5173**](http://localhost:5173) — no backend, no config, no API keys required to start.
+<br>
 
-> **Mock adapter works offline.** Add your own OpenAI or Anthropic keys to test against live models.
+Open **[localhost:5173](http://localhost:5173)** — no backend, no config, no API keys needed.
+
+<br>
+
+| | |
+|:---|:---|
+| 🟢 **Mock adapter** | Works offline. Instant feedback. |
+| 🔑 **OpenAI / Anthropic** | Add your own key to test live models. |
+| 🔒 **100% Client-side** | Keys never leave your browser. |
+
+<br>
+
+</div>
 
 <br>
 
@@ -108,54 +245,126 @@ Open [**localhost:5173**](http://localhost:5173) — no backend, no config, no A
 
 <br>
 
-## Tech Stack
+## 🎬 Demo
+
+<div align="center">
+
+### Workflow
+
+<br>
+
+```
+  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+  │              │     │              │     │              │
+  │  1. Write    │ ──▶ │  2. Define   │ ──▶ │  3. Configure │
+  │    Prompt    │     │   Contract   │     │    Models     │
+  │              │     │              │     │              │
+  └──────────────┘     └──────────────┘     └──────────────┘
+                                                    │
+                                                    ▼
+  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+  │              │     │              │     │              │
+  │  6. Export   │ ◀── │  5. Review   │ ◀── │  4. Run All  │
+  │   Results    │     │   Dashboard  │     │   (Parallel) │
+  │              │     │              │     │              │
+  └──────────────┘     └──────────────┘     └──────────────┘
+```
+
+<br>
+
+### Example Prompt + Contract
 
 <table align="center">
-  <tr>
-    <td align="center" width="96">
-      <img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" />
-      <br><sub><b>React 19</b></sub>
-    </td>
-    <td align="center" width="96">
-      <img src="https://skillicons.dev/icons?i=typescript" width="48" height="48" alt="TypeScript" />
-      <br><sub><b>TypeScript</b></sub>
-    </td>
-    <td align="center" width="96">
-      <img src="https://skillicons.dev/icons?i=vite" width="48" height="48" alt="Vite" />
-      <br><sub><b>Vite</b></sub>
-    </td>
-    <td align="center" width="96">
-      <img src="https://skillicons.dev/icons?i=tailwind" width="48" height="48" alt="Tailwind" />
-      <br><sub><b>Tailwind v4</b></sub>
-    </td>
-    <td align="center" width="96">
-      <img src="https://skillicons.dev/icons?i=vitest" width="48" height="48" alt="Vitest" />
-      <br><sub><b>Vitest</b></sub>
-    </td>
-    <td align="center" width="96">
-      <img src="https://skillicons.dev/icons?i=githubactions" width="48" height="48" alt="Actions" />
-      <br><sub><b>CI/CD</b></sub>
-    </td>
-  </tr>
+<tr>
+<td width="50%">
+
+**Prompt**
+```text
+Answer the following question about
+{{topic}} in {{language}}.
+
+Question: What are the key concepts
+of {{topic}}?
+
+Respond with valid JSON only.
+```
+
+</td>
+<td width="50%">
+
+**Contract (JSON Schema)**
+```json
+{
+  "type": "object",
+  "properties": {
+    "result": { "type": "string" },
+    "data": {
+      "type": "object",
+      "properties": {
+        "answer": { "type": "string" },
+        "confidence": { "type": "number" }
+      },
+      "required": ["answer", "confidence"]
+    }
+  },
+  "required": ["result", "data"]
+}
+```
+
+</td>
+</tr>
 </table>
 
 <br>
 
+### Expected Result
+
+<table align="center">
+<tr>
+<td align="center">🟢 <b>Mock</b></td>
+<td>
+
+```json
+{
+  "result": "success",
+  "data": {
+    "answer": "This is a deterministic mock response.",
+    "confidence": 0.95
+  }
+}
+```
+<sub>✅ Contract: <b>PASS</b> · Latency: ~200ms · Cost: $0.00</sub>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<br>
+
 ---
 
 <br>
 
-## Adapters
-
-| Adapter | Endpoint | Auth | Rate Limit Handling |
-|:---|:---|:---|:---|
-| **OpenAI** | `api.openai.com/v1/chat/completions` | `Bearer` token | 401 · 429 · 5xx |
-| **Anthropic** | `api.anthropic.com/v1/messages` | `x-api-key` header | 401 · 429 · 5xx |
-| **Mock** | _local, no network_ | none | Deterministic (200ms) |
+## 🛠 Tech Stack
 
 <br>
 
-> **Security:** API keys are stored in your browser's `localStorage` only. They are **never** transmitted to any backend or third party. The entire app runs client-side with zero server dependencies.
+<div align="center">
+
+| Layer | Technology | Purpose |
+|:---:|:---|:---|
+| 🖼️ | **React 19** + **TypeScript 5** | UI framework with strict type safety |
+| ⚡ | **Vite 8** | Dev server & production bundler |
+| 🎨 | **Tailwind CSS v4** | Utility-first dark theme styling |
+| ✅ | **Ajv** | JSON Schema compilation & validation |
+| 🌐 | **Axios** | HTTP client for LLM API calls |
+| 🧪 | **Vitest** + **RTL** | Unit + component testing (17 tests) |
+| 🔄 | **GitHub Actions** | CI: lint → test → build on every push |
+| 💾 | **localStorage** | State persistence across sessions |
+
+</div>
 
 <br>
 
@@ -163,16 +372,109 @@ Open [**localhost:5173**](http://localhost:5173) — no backend, no config, no A
 
 <br>
 
-## Scripts
+## 🔌 Adapters
 
-| Command | Description |
+<br>
+
+<div align="center">
+
+| | OpenAI | Anthropic | Mock |
+|:---:|:---:|:---:|:---:|
+| | <img src="https://img.icons8.com/fluency/48/openai.png" width="36"> | <img src="https://img.icons8.com/fluency/48/anthropic.png" width="36"> | <img src="https://img.icons8.com/fluency/48/robot.png" width="36"> |
+| **Endpoint** | `api.openai.com/v1` | `api.anthropic.com/v1` | _local, no network_ |
+| **Auth** | `Bearer` token | `x-api-key` header | _none_ |
+| **Errors** | 401 · 429 · 5xx | 401 · 429 · 5xx | _never fails_ |
+| **Latency** | ~1-3s | ~1-3s | ~200ms fixed |
+| **Key needed** | ✅ | ✅ | ❌ |
+
+</div>
+
+<br>
+
+<div align="center">
+
+> 🔐 API keys stay in your browser's `localStorage`. **Zero server dependencies.** The entire app is a static SPA.
+
+</div>
+
+<br>
+
+---
+
+<br>
+
+## 📂 Architecture
+
+<br>
+
+<div align="center">
+
+```
+prompt-contract-tester/
+│
+├── 📄 .github/workflows/ci.yml    ← CI: lint → test → build
+│
+├── 📦 src/
+│   ├── 🧩 types/index.ts          ← All TypeScript interfaces
+│   ├── 🧠 context/AppContext.tsx   ← React Context + useReducer
+│   ├── 🔌 adapters/
+│   │   ├── types.ts               ← Adapter interface contract
+│   │   ├── openai.ts              ← OpenAI chat completions
+│   │   ├── anthropic.ts           ← Anthropic messages API
+│   │   └── mock.ts                ← Deterministic local adapter
+│   ├── 🧱 components/
+│   │   ├── Layout.tsx             ← Shell: header + sidebar + main
+│   │   ├── PromptEditor.tsx       ← Textarea + placeholder fields
+│   │   ├── ContractEditor.tsx     ← JSON Schema editor + rule toggles
+│   │   ├── ModelConfigPanel.tsx   ← Model list + add/remove cards
+│   │   ├── TestRunner.tsx         ← Run All button + progress cards
+│   │   ├── ResultsDashboard.tsx   ← Summary table + expandable rows
+│   │   └── HistorySidebar.tsx     ← Past runs sidebar
+│   ├── 🔧 utils/
+│   │   ├── validateSchema.ts      ← Ajv compiler + data validator
+│   │   ├── storage.ts             ← localStorage save/load helpers
+│   │   ├── costCalculator.ts      ← Token → USD cost mapping
+│   │   └── placeholderParser.ts   ← {{key}} detection + fill
+│   └── 🎨 styles/index.css        ← Tailwind v4 + custom scrollbars
+│
+├── 🧪 tests/
+│   ├── setup.ts                   ← Vitest + jest-dom setup
+│   ├── adapters.test.ts           ← Mock adapter shape + timing
+│   ├── validateSchema.test.ts     ← Schema edge cases
+│   └── components/
+│       └── PromptEditor.test.tsx  ← Placeholder detection + input
+│
+└── ⚙️ Config files
+    ├── vite.config.ts             ← Vite + Tailwind + Vitest
+    ├── tsconfig.json              ← Strict TypeScript
+    └── package.json               ← Scripts + dependencies
+```
+
+</div>
+
+<br>
+
+---
+
+<br>
+
+## 📜 Scripts
+
+<br>
+
+<div align="center">
+
+| Command | What it does |
 |:---|:---|
-| `npm run dev` | Start Vite dev server on `localhost:5173` |
-| `npm run build` | TypeScript check + production bundle |
-| `npm run preview` | Preview the production build locally |
-| `npm test` | Run all Vitest suites (17 tests) |
-| `npm run test:watch` | Watch mode for development |
-| `npm run lint` | ESLint / Oxlint check |
+| `npm run dev` | 🔥 Start Vite dev server on `localhost:5173` |
+| `npm run build` | 📦 TypeScript check + production bundle |
+| `npm run preview` | 👀 Preview production build locally |
+| `npm test` | 🧪 Run all 17 Vitest suites |
+| `npm run test:watch` | 🔁 Watch mode for TDD |
+| `npm run lint` | 🧹 ESLint / Oxlint static analysis |
+| `npm run format` | 💅 Prettier auto-format |
+
+</div>
 
 <br>
 
@@ -180,25 +482,30 @@ Open [**localhost:5173**](http://localhost:5173) — no backend, no config, no A
 
 <br>
 
-## Project Structure
+## 🧪 Testing
+
+<br>
+
+<div align="center">
+
+| Test File | Coverage | What's Tested |
+|:---|:---:|:---|
+| `tests/adapters.test.ts` | 4 tests | Mock adapter shape, timing, usage stats |
+| `tests/validateSchema.test.ts` | 8 tests | Valid/invalid JSON, required fields, type mismatch, edge cases |
+| `tests/components/PromptEditor.test.tsx` | 5 tests | Placeholder detection, input fields, Load Example button |
+
+<br>
 
 ```
-src/
-├── adapters/        OpenAI · Anthropic · Mock implementations
-├── components/       PromptEditor · ContractEditor · TestRunner · Dashboard
-├── context/          React Context + useReducer (global state)
-├── styles/           Tailwind v4 directives + custom scrollbars
-├── types/            TypeScript interfaces & discriminated unions
-└── utils/            Ajv validation · localStorage · cost calc · placeholders
+✓ tests/validateSchema.test.ts      (8 tests)  39ms
+✓ tests/components/PromptEditor...  (5 tests)  447ms
+✓ tests/adapters.test.ts            (4 tests)  851ms
+
+Test Files  3 passed (3)
+     Tests  17 passed (17)
 ```
 
-```
-tests/
-├── adapters.test.ts              Mock adapter shape & timing
-├── validateSchema.test.ts        JSON Schema validation edge cases
-└── components/
-    └── PromptEditor.test.tsx     Placeholder detection & user input
-```
+</div>
 
 <br>
 
@@ -206,12 +513,71 @@ tests/
 
 <br>
 
-## License
+## 🔄 CI/CD
 
-[MIT](./LICENSE) — free for personal and commercial use.
+<div align="center">
+
+Every push to `main` and every PR triggers:
+
+```
+┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│ Checkout │───▶│ npm ci   │───▶│ Lint     │───▶│ Test     │───▶│ Build    │
+└──────────┘    └──────────┘    └──────────┘    └──────────┘
+```
 
 <br>
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=4F46E5&height=80&section=footer" width="100%">
-</p>
+<img src="https://img.shields.io/badge/CI-passing-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI">
+
+</div>
+
+<br>
+
+---
+
+<br>
+
+## 🤝 Contributing
+
+<div align="center">
+
+<br>
+
+Contributions are welcome! Here's how:
+
+1. 🍴 Fork the repo
+2. 🌿 Create a branch: `git checkout -b feature/amazing-feature`
+3. 💾 Commit changes: `git commit -m 'Add amazing feature'`
+4. 📤 Push: `git push origin feature/amazing-feature`
+5. 🔃 Open a Pull Request
+
+<br>
+
+Make sure tests pass: `npm test`
+
+</div>
+
+<br>
+
+---
+
+<br>
+
+<div align="center">
+
+## 📄 License
+
+<br>
+
+**[MIT](./LICENSE)** — Free for personal and commercial use.
+
+<br>
+<br>
+
+---
+
+<br>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=4F46E5&height=100&section=footer&text=&fontSize=0" width="100%">
+
+</div>
