@@ -19,9 +19,9 @@ describe('PromptEditor', () => {
     expect(textarea).toBeInTheDocument();
   });
 
-  it('has a Load Example button', () => {
+  it('has an Example button', () => {
     renderWithProvider();
-    expect(screen.getByText('Load Example')).toBeInTheDocument();
+    expect(screen.getByText('Example')).toBeInTheDocument();
   });
 
   it('detects placeholders in the default prompt and renders input fields', () => {
@@ -34,23 +34,20 @@ describe('PromptEditor', () => {
     const user = userEvent.setup();
     renderWithProvider();
 
-    const inputs = screen.getAllByPlaceholderText(/value for/i);
-    expect(inputs.length).toBeGreaterThan(0);
+    const topicInput = screen.getByPlaceholderText('topic');
+    expect(topicInput).toBeInTheDocument();
 
-    await user.type(inputs[0], 'React Hooks');
-    expect(inputs[0]).toHaveValue('React Hooks');
+    await user.type(topicInput, 'React Hooks');
+    expect(topicInput).toHaveValue('React Hooks');
   });
 
-  it('shows Load Example button and it modifies prompt', async () => {
+  it('clicking Example sets the example prompt', async () => {
     const user = userEvent.setup();
     renderWithProvider();
 
-    const textarea = screen.getByPlaceholderText(
-      /write your prompt/i,
-    ) as HTMLTextAreaElement;
-    const original = textarea.value;
+    await user.click(screen.getByText('Example'));
 
-    await user.click(screen.getByText('Load Example'));
-    expect(textarea.value).toBe(original);
+    const textarea = screen.getByPlaceholderText(/write your prompt/i) as HTMLTextAreaElement;
+    expect(textarea.value).toContain('{{topic}}');
   });
 });
